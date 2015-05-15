@@ -18,13 +18,11 @@ File {
 # all boxes get the base config
 include baseconfig
 
-
-
 node 'db' {
   include mysql
 }
 
-node 'ex7web1' {
+node 'web' {
   include apache, apache_vhosts, php
 }
 
