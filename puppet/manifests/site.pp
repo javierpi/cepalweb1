@@ -23,6 +23,6 @@ node 'db' {
 }
 
 node 'web' {
-  include apache, apache_vhosts, php
+  include apache, apache_vhosts, php, drush
 }
 

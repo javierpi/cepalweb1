@@ -26,8 +26,16 @@ class mysql {
   }
 
   exec { 'load-dynamic-sql':
-    command => 'mysql -u root -proot < /vagrant/sites/dynamic.sql',
+    command => 'mysql -u root -proot < /vagrant/sites/createDatabase.sql',
     path    => ['/bin', '/usr/bin'],
     require => Exec['set-mysql-password'];
   }
+  
+  ## Importa bd Drupal Sitio Web
+  exec {'import mysql':
+    path    => ['/bin', '/usr/bin'],
+    command => 'mysql -u root -proot -D cepalweb < /vagrant/sites/bdmysql.sql',
+    require => Exec['set-mysql-password'];
+  }
+
 }
